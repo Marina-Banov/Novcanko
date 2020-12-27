@@ -20,4 +20,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Postavke.unity
     guid: afb85be5114db6c49a8830afd2dabebe
+  - enabled: 1
+    path: Assets/Scenes/PopUpNovcanik.unity
+    guid: 0dbfb1f5ca2f5df45a3e5501fa89d95a
+  - enabled: 1
+    path: Assets/Scenes/PopUpKovanice.unity
+    guid: 0683fb3de2bca9d45ad34687e4ce07ac
   m_configObjects: {}
