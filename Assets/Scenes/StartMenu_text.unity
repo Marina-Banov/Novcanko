@@ -383,8 +383,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Uredi razine
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee112e0dade8d6049916544d38ff1f48, type: 2}
-  m_sharedMaterial: {fileID: -4063558678131208952, guid: ee112e0dade8d6049916544d38ff1f48,
+  m_fontAsset: {fileID: 11400000, guid: 619e960f02b12b04aac36a00d72a2df5, type: 2}
+  m_sharedMaterial: {fileID: -4063558678131208952, guid: 619e960f02b12b04aac36a00d72a2df5,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -413,8 +413,8 @@ MonoBehaviour:
   m_fontSizeBase: 220
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 72
-  m_fontSizeMax: 1200
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
   m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -896,8 +896,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Trgovina
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee112e0dade8d6049916544d38ff1f48, type: 2}
-  m_sharedMaterial: {fileID: -4063558678131208952, guid: ee112e0dade8d6049916544d38ff1f48,
+  m_fontAsset: {fileID: 11400000, guid: 619e960f02b12b04aac36a00d72a2df5, type: 2}
+  m_sharedMaterial: {fileID: -4063558678131208952, guid: 619e960f02b12b04aac36a00d72a2df5,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -926,8 +926,8 @@ MonoBehaviour:
   m_fontSizeBase: 220
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 72
-  m_fontSizeMax: 1200
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
   m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1160,8 +1160,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Nov\u010Danik"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee112e0dade8d6049916544d38ff1f48, type: 2}
-  m_sharedMaterial: {fileID: -4063558678131208952, guid: ee112e0dade8d6049916544d38ff1f48,
+  m_fontAsset: {fileID: 11400000, guid: 619e960f02b12b04aac36a00d72a2df5, type: 2}
+  m_sharedMaterial: {fileID: -4063558678131208952, guid: 619e960f02b12b04aac36a00d72a2df5,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1190,8 +1190,8 @@ MonoBehaviour:
   m_fontSizeBase: 220
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 72
-  m_fontSizeMax: 1200
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
   m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1682,8 +1682,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Izlaz
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee112e0dade8d6049916544d38ff1f48, type: 2}
-  m_sharedMaterial: {fileID: -4063558678131208952, guid: ee112e0dade8d6049916544d38ff1f48,
+  m_fontAsset: {fileID: 11400000, guid: 619e960f02b12b04aac36a00d72a2df5, type: 2}
+  m_sharedMaterial: {fileID: -4063558678131208952, guid: 619e960f02b12b04aac36a00d72a2df5,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1712,8 +1712,8 @@ MonoBehaviour:
   m_fontSizeBase: 220
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 72
-  m_fontSizeMax: 1200
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
   m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
@@ -1818,8 +1818,8 @@ MonoBehaviour:
 
 '
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: ee112e0dade8d6049916544d38ff1f48, type: 2}
-  m_sharedMaterial: {fileID: -4063558678131208952, guid: ee112e0dade8d6049916544d38ff1f48,
+  m_fontAsset: {fileID: 11400000, guid: 619e960f02b12b04aac36a00d72a2df5, type: 2}
+  m_sharedMaterial: {fileID: -4063558678131208952, guid: 619e960f02b12b04aac36a00d72a2df5,
     type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
@@ -1848,8 +1848,8 @@ MonoBehaviour:
   m_fontSizeBase: 220
   m_fontWeight: 400
   m_enableAutoSizing: 0
-  m_fontSizeMin: 72
-  m_fontSizeMax: 1200
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
   m_fontStyle: 16
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512

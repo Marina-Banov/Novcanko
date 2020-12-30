@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/StartMenu.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Novcanik.unity
+    path: Assets/Scenes/Trgovina.unity
     guid: 6046df5a91a81cf4c9124875d1996f5c
   - enabled: 1
-    path: Assets/Scenes/Trgovina.unity
+    path: Assets/Scenes/Trgovina2.unity
     guid: 6b81a23845b276d4faf673a17d8b44db
   - enabled: 1
     path: Assets/Scenes/UrediRazine.unity
