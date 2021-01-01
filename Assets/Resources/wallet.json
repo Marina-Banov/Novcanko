@@ -1,5 +1,5 @@
 {
-	"walletItems": [
+	"coins": [
 		{
 			"name": "Kovanica od 5 kn",
 			"value": 5,
@@ -19,7 +19,9 @@
 			"name": "Kovanica od 0.50 kn",
 			"value": 0.5,
 			"quantity": 0
-		},
+		}
+	],
+	"banknotes": [
 		{
 			"name": "Novčanica od 10 kn",
 			"value": 10,

@@ -15,7 +15,8 @@ public class SaveData : MonoBehaviour
 [System.Serializable]
 public class Wallet
 {
-    public List<WalletItem> walletItems = new List<WalletItem>();
+    public List<WalletItem> coins = new List<WalletItem>();
+    public List<WalletItem> banknotes = new List<WalletItem>();
 }
 
 [System.Serializable]
@@ -24,6 +25,6 @@ public class WalletItem
     public string name;
     public float value;
     public int quantity;
-    public string imageAPath;
-    public string imageBPath;
+   /* public string imageAPath;
+    public string imageBPath;*/
 }
