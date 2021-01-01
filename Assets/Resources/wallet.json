@@ -1,0 +1,49 @@
+{
+	"walletItems": [
+		{
+			"name": "Kovanica od 5 kn",
+			"value": 5,
+			"quantity": 0
+		},
+		{
+			"name": "Kovanica od 2 kn",
+			"value": 2,
+			"quantity": 0
+		},
+		{
+			"name": "Kovanica od 1 kn",
+			"value": 1,
+			"quantity": 0
+		},
+		{
+			"name": "Kovanica od 0.50 kn",
+			"value": 0.5,
+			"quantity": 0
+		},
+		{
+			"name": "Novčanica od 10 kn",
+			"value": 10,
+			"quantity": 0
+		},
+		{
+			"name": "Novčanica od 20 kn",
+			"value": 20,
+			"quantity": 0
+		},
+		{
+			"name": "Novčanica od 50 kn",
+			"value": 50,
+			"quantity": 0
+		},
+		{
+			"name": "Novčanica od 100 kn",
+			"value": 100,
+			"quantity": 0
+		},
+		{
+			"name": "Novčanica od 200 kn",
+			"value": 200,
+			"quantity": 0
+		}
+	]
+}

@@ -8,7 +8,7 @@ public class SaveData : MonoBehaviour
 
     public void SaveToJson()
     {
-        System.IO.File.WriteAllText(Application.persistentDataPath + "/wallet.json", JsonUtility.ToJson(wallet));
+        System.IO.File.WriteAllText(Application.dataPath + "/wallet.json", JsonUtility.ToJson(wallet));
     }
 }
 
@@ -22,6 +22,8 @@ public class Wallet
 public class WalletItem
 {
     public string name;
-    public int value;
+    public float value;
     public int quantity;
+    public string imageAPath;
+    public string imageBPath;
 }
