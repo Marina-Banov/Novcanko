@@ -15,12 +15,14 @@ public class EditWalletItems : MonoBehaviour
     public int currentItemIndex = 0;
     public Image walletItemPlaceholder;
     public TextMeshProUGUI description;
+    public TMP_InputField quantityInput;
 
     // Start is called before the first frame update
     void Start()
     {
         walletItemPlaceholder = gameObject.transform.GetChild(4).gameObject.GetComponent<Image>();
         description = gameObject.transform.GetChild(9).gameObject.GetComponent<TextMeshProUGUI>();
+        quantityInput = gameObject.transform.GetChild(7).gameObject.GetComponent<TMP_InputField>();
         string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
         setCurrentItem(wallet.coins[currentItemIndex]);
@@ -36,6 +38,7 @@ public class EditWalletItems : MonoBehaviour
     {
         walletItemPlaceholder.sprite = Resources.Load<Sprite>("Money/kn5"); // TODO image not showing!!
         description.text = walletItem.name;
+        quantityInput.text = walletItem.quantity.ToString();
     }
 
     public void updateCurrentItemIndex(int offset)
@@ -61,5 +64,19 @@ public class EditWalletItems : MonoBehaviour
             setCurrentItem(sc ? wallet.coins[currentItemIndex] : wallet.banknotes[currentItemIndex]);
         }
         showCoins = sc;
+    }
+
+    public void updateQuantity(int offset)
+    {
+        if (showCoins)
+        {
+            wallet.coins[currentItemIndex].quantity = System.Math.Max(0, wallet.coins[currentItemIndex].quantity + offset);
+            setCurrentItem(wallet.coins[currentItemIndex]);
+        }
+        else
+        {
+            wallet.banknotes[currentItemIndex].quantity = System.Math.Max(0, wallet.banknotes[currentItemIndex].quantity + offset);
+            setCurrentItem(wallet.banknotes[currentItemIndex]);
+        }
     }
 }

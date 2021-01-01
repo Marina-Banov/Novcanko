@@ -363,6 +363,9 @@ MonoBehaviour:
   setShowCoinsEvent:
     m_PersistentCalls:
       m_Calls: []
+  updateQuantityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &695891976
 GameObject:
   m_ObjectHideFlags: 0
@@ -520,6 +523,9 @@ MonoBehaviour:
           m_BoolArgument: 0
         m_CallState: 2
   setShowCoinsEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  updateQuantityEvent:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1 &725872874
@@ -890,6 +896,7 @@ GameObject:
   - component: {fileID: 1123887286}
   - component: {fileID: 1123887285}
   - component: {fileID: 1123887284}
+  - component: {fileID: 1123887287}
   m_Layer: 5
   m_Name: ButtonMore
   m_TagString: Untagged
@@ -958,7 +965,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1123887285}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1123887287}
+        m_MethodName: emitUpdateQuantityEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1123887285
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -996,6 +1014,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1123887282}
   m_CullTransparentMesh: 0
+--- !u!114 &1123887287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123887282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3a5e841a14744499c78317e710e9ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateCurrentItemEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  setShowCoinsEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  updateQuantityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2120234077}
+        m_MethodName: updateQuantity
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1203351643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1632,6 +1682,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  updateQuantityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1526514495
 GameObject:
   m_ObjectHideFlags: 0
@@ -1858,6 +1911,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 1
         m_CallState: 2
+  updateQuantityEvent:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1770028796
 GameObject:
   m_ObjectHideFlags: 0
@@ -2430,6 +2486,7 @@ GameObject:
   - component: {fileID: 2108500435}
   - component: {fileID: 2108500434}
   - component: {fileID: 2108500433}
+  - component: {fileID: 2108500436}
   m_Layer: 5
   m_Name: ButtonLess
   m_TagString: Untagged
@@ -2498,7 +2555,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2108500434}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2108500436}
+        m_MethodName: emitUpdateQuantityEvent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2108500434
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2536,6 +2604,38 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2108500431}
   m_CullTransparentMesh: 0
+--- !u!114 &2108500436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2108500431}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6a3a5e841a14744499c78317e710e9ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  updateCurrentItemEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  setShowCoinsEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  updateQuantityEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2120234077}
+        m_MethodName: updateQuantity
+        m_Mode: 3
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: -1
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2120234072
 GameObject:
   m_ObjectHideFlags: 0
@@ -2665,3 +2765,4 @@ MonoBehaviour:
   currentItemIndex: 0
   walletItemPlaceholder: {fileID: 0}
   description: {fileID: 0}
+  quantityInput: {fileID: 0}

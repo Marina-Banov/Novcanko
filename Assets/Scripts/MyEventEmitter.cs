@@ -7,6 +7,7 @@ public class MyEventEmitter : MonoBehaviour
 {
     public UnityEvent updateCurrentItemEvent;
     public UnityEvent setShowCoinsEvent;
+    public UnityEvent updateQuantityEvent;
 
     public void emitUpdateCurrentItemEvent()
     {
@@ -16,5 +17,10 @@ public class MyEventEmitter : MonoBehaviour
     public void emitSetShowCoinsEvent()
     {
         setShowCoinsEvent.Invoke();
+    }
+
+    public void emitUpdateQuantityEvent()
+    {
+        updateQuantityEvent.Invoke();
     }
 }
