@@ -12,14 +12,13 @@ public class EditWalletItems : MonoBehaviour
     public const int BANKNOTES_ITEMS = 5;
     public bool showCoins = true;
     public int currentItemIndex = 0;
-    public Image walletItemPlaceholder;
+    public Button walletItemPlaceholder;
     public TextMeshProUGUI description;
     public TMP_InputField quantityInput;
 
-    // Start is called before the first frame update
     void Start()
     {
-        walletItemPlaceholder = gameObject.transform.GetChild(4).gameObject.GetComponent<Image>();
+        walletItemPlaceholder = gameObject.transform.GetChild(4).gameObject.GetComponent<Button>();
         description = gameObject.transform.GetChild(9).gameObject.GetComponent<TextMeshProUGUI>();
         quantityInput = gameObject.transform.GetChild(7).gameObject.GetComponent<TMP_InputField>();
         string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
@@ -27,15 +26,9 @@ public class EditWalletItems : MonoBehaviour
         SetCurrentItem(wallet.coins[currentItemIndex]);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     void SetCurrentItem(WalletItem walletItem)
     {
-        walletItemPlaceholder.sprite = Resources.Load<Sprite>("Money/kn5"); // TODO image not showing!!
+        walletItemPlaceholder.image.sprite = Resources.Load<Sprite>("Money/" + walletItem.imageAPath);
         description.text = walletItem.name + "\nUkupna vrijednost: " + (walletItem.quantity * walletItem.value).ToString() + " kn";
         quantityInput.text = walletItem.quantity.ToString();
     }
@@ -83,6 +76,14 @@ public class EditWalletItems : MonoBehaviour
     {
         System.IO.File.WriteAllText(Application.dataPath + "/Resources/wallet.json", JsonUtility.ToJson(wallet));
     }
+
+    public void FlipMoney()
+    {
+        WalletItem currentWalletItem = (showCoins) ? wallet.coins[currentItemIndex] : wallet.banknotes[currentItemIndex];
+        Sprite a = Resources.Load<Sprite>("Money/" + currentWalletItem.imageAPath);
+        Sprite b = Resources.Load<Sprite>("Money/" + currentWalletItem.imageBPath);
+        walletItemPlaceholder.image.sprite = (walletItemPlaceholder.image.sprite == a) ? b : a;
+    }
 }
 
 [System.Serializable]
@@ -98,6 +99,6 @@ public class WalletItem
     public string name;
     public float value;
     public int quantity;
-    /* public string imageAPath;
-     public string imageBPath;*/
+    public string imageAPath;
+    public string imageBPath;
 }
