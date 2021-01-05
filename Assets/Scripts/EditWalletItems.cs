@@ -23,12 +23,13 @@ public class EditWalletItems : MonoBehaviour
         quantityInput = gameObject.transform.GetChild(7).gameObject.GetComponent<TMP_InputField>();
         string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
-        SetCurrentItem(wallet.coins[currentItemIndex]);
+        Sprite sprite = Resources.Load<Sprite>("Money/" + wallet.coins[currentItemIndex].imageAPath);
+        SetCurrentItem(wallet.coins[currentItemIndex], sprite);
     }
 
-    void SetCurrentItem(WalletItem walletItem)
+    void SetCurrentItem(WalletItem walletItem, Sprite sprite)
     {
-        walletItemPlaceholder.image.sprite = Resources.Load<Sprite>("Money/" + walletItem.imageAPath);
+        walletItemPlaceholder.image.sprite = sprite;
         description.text = walletItem.name + "\nUkupna vrijednost: " + (walletItem.quantity * walletItem.value).ToString() + " kn";
         quantityInput.text = walletItem.quantity.ToString();
     }
@@ -39,12 +40,14 @@ public class EditWalletItems : MonoBehaviour
         if (showCoins)
         {
             currentItemIndex = (currentItemIndex >= 0) ? currentItemIndex % COINS_ITEMS : COINS_ITEMS-1;
-            SetCurrentItem(wallet.coins[currentItemIndex]);
+            Sprite sprite = Resources.Load<Sprite>("Money/" + wallet.coins[currentItemIndex].imageAPath);
+            SetCurrentItem(wallet.coins[currentItemIndex], sprite);
         }
         else
         {
             currentItemIndex = (currentItemIndex >= 0) ? currentItemIndex % BANKNOTES_ITEMS : BANKNOTES_ITEMS-1;
-            SetCurrentItem(wallet.banknotes[currentItemIndex]);
+            Sprite sprite = Resources.Load<Sprite>("Money/" + wallet.banknotes[currentItemIndex].imageAPath);
+            SetCurrentItem(wallet.banknotes[currentItemIndex], sprite);
         }
     }
 
@@ -53,22 +56,41 @@ public class EditWalletItems : MonoBehaviour
         if (showCoins != sc)
         {
             currentItemIndex = 0;
-            SetCurrentItem(sc ? wallet.coins[currentItemIndex] : wallet.banknotes[currentItemIndex]);
+            WalletItem walletItem = sc ? wallet.coins[currentItemIndex] : wallet.banknotes[currentItemIndex];
+            Sprite sprite = Resources.Load<Sprite>("Money/" + walletItem.imageAPath);
+            SetCurrentItem(walletItem, sprite);
         }
         showCoins = sc;
     }
 
     public void UpdateQuantity(int offset)
-    {
+    {        
         if (showCoins)
         {
             wallet.coins[currentItemIndex].quantity = System.Math.Max(0, wallet.coins[currentItemIndex].quantity + offset);
-            SetCurrentItem(wallet.coins[currentItemIndex]);
+            Sprite a = Resources.Load<Sprite>("Money/" + wallet.coins[currentItemIndex].imageAPath);
+            Sprite b = Resources.Load<Sprite>("Money/" + wallet.coins[currentItemIndex].imageBPath);
+            SetCurrentItem(wallet.coins[currentItemIndex], (walletItemPlaceholder.image.sprite == a) ? a : b);
         }
         else
         {
             wallet.banknotes[currentItemIndex].quantity = System.Math.Max(0, wallet.banknotes[currentItemIndex].quantity + offset);
-            SetCurrentItem(wallet.banknotes[currentItemIndex]);
+            Sprite a = Resources.Load<Sprite>("Money/" + wallet.banknotes[currentItemIndex].imageAPath);
+            Sprite b = Resources.Load<Sprite>("Money/" + wallet.banknotes[currentItemIndex].imageBPath);
+            SetCurrentItem(wallet.banknotes[currentItemIndex], (walletItemPlaceholder.image.sprite == a) ? a : b);
+        }
+    }
+
+    public void UpdateQuantityFromInput()
+    {
+        int value = System.Math.Abs(System.Int32.Parse(quantityInput.text));
+        if (showCoins)
+        {
+            UpdateQuantity(value - wallet.coins[currentItemIndex].quantity);
+        }
+        else
+        {
+            UpdateQuantity(value - wallet.banknotes[currentItemIndex].quantity);
         }
     }
 
