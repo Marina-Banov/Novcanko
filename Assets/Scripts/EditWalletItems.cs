@@ -18,9 +18,6 @@ public class EditWalletItems : MonoBehaviour
 
     void Start()
     {
-        walletItemPlaceholder = gameObject.transform.GetChild(4).gameObject.GetComponent<Button>();
-        description = gameObject.transform.GetChild(9).gameObject.GetComponent<TextMeshProUGUI>();
-        quantityInput = gameObject.transform.GetChild(7).gameObject.GetComponent<TMP_InputField>();
         string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
         Sprite sprite = Resources.Load<Sprite>("Money/" + wallet.coins[currentItemIndex].imageAPath);

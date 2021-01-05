@@ -2870,9 +2870,9 @@ MonoBehaviour:
     banknotes: []
   showCoins: 1
   currentItemIndex: 0
-  walletItemPlaceholder: {fileID: 0}
-  description: {fileID: 0}
-  quantityInput: {fileID: 0}
+  walletItemPlaceholder: {fileID: 1766866768}
+  description: {fileID: 1309388207}
+  quantityInput: {fileID: 1939639221}
 --- !u!114 &2120234078
 MonoBehaviour:
   m_ObjectHideFlags: 0

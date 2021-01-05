@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
-public class ShowWaletContent : MonoBehaviour
+public class TotalValue : MonoBehaviour
 {
     [SerializeField] public Wallet wallet;
     public const int COINS_ITEMS = 4;
@@ -12,15 +12,9 @@ public class ShowWaletContent : MonoBehaviour
 
     void Start()
     {
-        total = gameObject.transform.GetChild(3).gameObject.transform.GetChild(0).GetComponent<TextMeshProUGUI>();
         string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
         total.text = "UKUPNO: " + GetTotalValue().ToString() + " kn";
-    }
-
-    void Update()
-    {
-        
     }
 
     float GetTotalValue()
