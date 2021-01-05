@@ -901,6 +901,7 @@ GameObject:
   - component: {fileID: 1075560037}
   - component: {fileID: 1075560036}
   - component: {fileID: 1075560035}
+  - component: {fileID: 1075560038}
   m_Layer: 5
   m_Name: ButtonIgra
   m_TagString: Untagged
@@ -971,12 +972,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1075560038}
+        m_MethodName: selectDifficulty
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1019,6 +1020,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1075560033}
   m_CullTransparentMesh: 0
+--- !u!114 &1075560038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1075560033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 308d42320b628bd46837b6b3236005f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1201298098
 GameObject:
   m_ObjectHideFlags: 0
@@ -1283,6 +1296,7 @@ GameObject:
   - component: {fileID: 1233795068}
   - component: {fileID: 1233795067}
   - component: {fileID: 1233795066}
+  - component: {fileID: 1233795069}
   m_Layer: 5
   m_Name: ButtonUrediRazine
   m_TagString: Untagged
@@ -1353,12 +1367,12 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_MethodName: 
+      - m_Target: {fileID: 1233795069}
+        m_MethodName: loadEditGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -1401,6 +1415,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1233795064}
   m_CullTransparentMesh: 0
+--- !u!114 &1233795069
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1233795064}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb0e200bd919c5b43b2b4e046a4ae63b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1256993485
 GameObject:
   m_ObjectHideFlags: 0
