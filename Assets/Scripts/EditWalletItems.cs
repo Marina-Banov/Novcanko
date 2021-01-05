@@ -107,20 +107,3 @@ public class EditWalletItems : MonoBehaviour
         walletItemPlaceholder.image.sprite = (walletItemPlaceholder.image.sprite == a) ? b : a;
     }
 }
-
-[System.Serializable]
-public class Wallet
-{
-    public List<WalletItem> coins = new List<WalletItem>();
-    public List<WalletItem> banknotes = new List<WalletItem>();
-}
-
-[System.Serializable]
-public class WalletItem
-{
-    public string name;
-    public float value;
-    public int quantity;
-    public string imageAPath;
-    public string imageBPath;
-}
