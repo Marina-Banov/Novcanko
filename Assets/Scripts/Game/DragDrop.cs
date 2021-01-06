@@ -69,8 +69,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     }
 
     public void RemovedMoney(int number) {
-    	GiveAmount.givenNumber -= number;
-    	moneyBox.gameObject.tag = "Untagged";
+    	// GiveAmount.givenNumber -= number;
+		canvasGroup.GetComponent<LevelManagement>().UpdateGiven(-number);
+		moneyBox.gameObject.tag = "Untagged";
     	int cloneCount = checkClone(moneyName);
     	if (cloneCount != 0) {
     		Destroy(moneyBox.gameObject);

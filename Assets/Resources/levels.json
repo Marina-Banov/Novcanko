@@ -1,0 +1,21 @@
+{
+	"easy": [
+		{
+			"completed": false,
+			"goalAmount": 14.0,
+			"availableMoney": [false,false,false,false,false,false,true,true,true,false,false,false,false,false]
+		},
+		{
+			"completed": false,
+			"goalAmount": 15.0,
+			"availableMoney": [false,false,false,false,false,false,true,false,true,true,false,false,false,false]
+		}
+	],
+	"hard": [
+		{
+			"completed": false,
+			"goalAmount": 53.65,
+			"availableMoney": [false,false,true,true,true,true,true,true,true,true,true,true,false,false]
+		}
+	]
+}
