@@ -7,11 +7,10 @@ using TMPro;
 
 public class EditWalletItems : MonoBehaviour
 {
-    [SerializeField] public Wallet wallet;
-    public const int COINS_ITEMS = 4;
-    public const int BANKNOTES_ITEMS = 5;
-    public bool showCoins = true;
-    public int currentItemIndex = 0;
+    [SerializeField] Wallet wallet;
+    int COINS_ITEMS, BANKNOTES_ITEMS;
+    bool showCoins = true;
+    int currentItemIndex = 0;
     public Button walletItemPlaceholder;
     public TextMeshProUGUI description;
     public TMP_InputField quantityInput;
@@ -20,6 +19,8 @@ public class EditWalletItems : MonoBehaviour
     {
         string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
+        COINS_ITEMS = wallet.coins.Count;
+        BANKNOTES_ITEMS = wallet.banknotes.Count;
         Sprite sprite = Resources.Load<Sprite>("Money/" + wallet.coins[currentItemIndex].imageAPath);
         SetCurrentItem(wallet.coins[currentItemIndex], sprite);
     }

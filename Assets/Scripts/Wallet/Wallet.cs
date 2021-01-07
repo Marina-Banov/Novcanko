@@ -12,7 +12,7 @@ public class Wallet
 public class WalletItem
 {
     public string name;
-    public float value;
+    public double value;
     public int quantity;
     public string imageAPath;
     public string imageBPath;
