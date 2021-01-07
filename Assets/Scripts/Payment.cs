@@ -6,32 +6,55 @@ using System;
 
 public class Payment : MonoBehaviour
 {
+    [SerializeField] Wallet wallet;
     public GameObject[] moneyList;
     public TextMeshProUGUI[] quantityList;
     public TextMeshProUGUI noMoney;
 
     private float[,] novcanik = {
-                                    {0.01f, 2},
-                                    {0.02f, 4},
-                                    {0.05f, 6},
-                                    {0.1f, 2},
-                                    {0.2f, 4},
-                                    {0.5f, 6},
-                                    {1f, 2},
-                                    {2f, 4},
-                                    {5f, 6},
-                                    {10f, 2},
-                                    {20f, 4},
+                                    {0.01f, 0},
+                                    {0.02f, 0},
+                                    {0.05f, 0},
+                                    {0.1f, 0},
+                                    {0.2f, 0},
+                                    {0.5f, 0},
+                                    {1f, 0},
+                                    {2f, 0},
+                                    {5f, 0},
+                                    {10f, 0},
+                                    {20f, 0},
                                     {50f, 0},
                                     {100f, 0},
-                                    {200f, 2},
-                                    {500f, 1},
+                                    {200f, 0},
+                                    {500f, 0},
                                     {1000f, 0},
                                 };
 
 
 
-    int slijedecaNiza(float ostatak)
+    void setUpNovcanik()
+    {
+        string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
+        wallet = JsonUtility.FromJson<Wallet>(jsonString);
+
+        int coins = wallet.coins.Count;
+        for (int i = 0; i < coins; i++)
+        {
+            Debug.Log(novcanik[i, 1]);
+            if (wallet.coins[coins-1-i].quantity == 0) continue;
+            novcanik[i,1] = wallet.coins[coins-1-i].quantity;
+            //Debug.Log(novcanik[i, 1]);
+        }
+        for (int i = 0; i < wallet.banknotes.Count; i++)
+        {
+            Debug.Log(novcanik[i + 9, 1]);
+            if (wallet.banknotes[i].quantity == 0) continue;
+            novcanik[i+9, 1] = wallet.banknotes[i].quantity;
+            //Debug.Log(novcanik[i+9, 1]);
+        }
+    }
+
+    int sljedecaNiza(float ostatak)
     {
         for (int i = 15; i >= 0; i--)
         {
@@ -49,7 +72,7 @@ public class Payment : MonoBehaviour
         return ostatak;
     }
 
-    float slijedecaVisa(float ostatak)
+    float sljedecaVisa(float ostatak)
     {
         for (int i = 0; i < 16; i++)
         {
@@ -68,8 +91,10 @@ public class Payment : MonoBehaviour
     {
         int n = 200;
         int i = 0;
-        float iznos = 569.66f;
+        float iznos = Trgovina.amount;
         float ost = iznos;
+
+        setUpNovcanik();
 
         float[,] novcanik_pocetak = novcanik.Clone() as float[,];
         float[,] payment = novcanik.Clone() as float[,];
@@ -87,8 +112,8 @@ public class Payment : MonoBehaviour
 
         while (ost > 0)
         {
-            if (i != -1) i = slijedecaNiza(ost); //ima nizih novcanica
-            if (i == -1) ost = slijedecaVisa(ost); //nema nizih novcanica
+            if (i != -1) i = sljedecaNiza(ost); //ima nizih novcanica
+            if (i == -1) ost = sljedecaVisa(ost); //nema nizih novcanica
             else ost = oduzmiOdOstatka(i, ost);
 
             ost = (float)Math.Round(ost, 2);
