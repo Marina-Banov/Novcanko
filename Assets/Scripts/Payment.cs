@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 using System;
@@ -30,8 +31,6 @@ public class Payment : MonoBehaviour
                                     {1000f, 0},
                                 };
 
-
-
     void setUpNovcanik()
     {
         string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
@@ -40,17 +39,13 @@ public class Payment : MonoBehaviour
         int coins = wallet.coins.Count;
         for (int i = 0; i < coins; i++)
         {
-            Debug.Log(novcanik[i, 1]);
             if (wallet.coins[coins-1-i].quantity == 0) continue;
             novcanik[i,1] = wallet.coins[coins-1-i].quantity;
-            //Debug.Log(novcanik[i, 1]);
         }
         for (int i = 0; i < wallet.banknotes.Count; i++)
         {
-            Debug.Log(novcanik[i + 9, 1]);
             if (wallet.banknotes[i].quantity == 0) continue;
             novcanik[i+9, 1] = wallet.banknotes[i].quantity;
-            //Debug.Log(novcanik[i+9, 1]);
         }
     }
 
@@ -96,18 +91,23 @@ public class Payment : MonoBehaviour
 
         setUpNovcanik();
 
-        float[,] novcanik_pocetak = novcanik.Clone() as float[,];
-        float[,] payment = novcanik.Clone() as float[,];
-
-        for (int j = 0; j < 16; j++)
-            iznos -= (novcanik[j, 0] * novcanik[j, 1]);
-
-        if (iznos > 0)
+        if (Trgovina.krupno)   //krupno placanje - bez kovanica
         {
-            ost = 0;
-            noMoney.enabled = true;
-            noMoney.gameObject.SetActive(true);
+            for (int j = 0; j < 9; j++)
+                novcanik[j, 1] = 0;
         }
+            float[,] novcanik_pocetak = novcanik.Clone() as float[,];
+            float[,] payment = novcanik.Clone() as float[,];
+
+            for (int j = 0; j < 16; j++)
+                iznos -= (novcanik[j, 0] * novcanik[j, 1]);
+
+            if (iznos > 0)
+            {
+                ost = 0;
+                noMoney.enabled = true;
+                noMoney.gameObject.SetActive(true);
+            }
 
 
         while (ost > 0)
@@ -150,9 +150,20 @@ public class Payment : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Pay()
     {
+        if (!Trgovina.krupno) //krupno placanje - bez kovanica
+        {
+            int coins = wallet.coins.Count;
+            for (int i = 0; i < coins; i++)
+                wallet.coins[coins - 1 - i].quantity = (int)novcanik[i, 1];
+        }
         
+        for (int i = 0; i < wallet.banknotes.Count; i++)
+            wallet.banknotes[i].quantity = (int)novcanik[i + 9, 1];
+        
+        System.IO.File.WriteAllText(Application.dataPath + "/Resources/wallet.json", JsonUtility.ToJson(wallet));
+        SceneManager.LoadScene("Trgovina");
     }
+
 }

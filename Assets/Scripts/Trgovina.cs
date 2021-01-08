@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 using System;
@@ -11,11 +12,12 @@ public class Trgovina : MonoBehaviour
     public TextMeshProUGUI total;
 
     static public float amount;
+    static public Boolean krupno;
     public GameObject inputField;
 
-    // Start is called before the first frame update
     void Start()
     {
+        krupno = false;
         string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
         COINS_ITEMS = wallet.coins.Count;
@@ -23,7 +25,6 @@ public class Trgovina : MonoBehaviour
         total.text = "U novčaniku imam:\n " + GetTotalValue().ToString() + " kn";
     }
 
-    // Update is called once per frame
     void Update()
     {
         string input = inputField.GetComponent<TMP_InputField>().text;
@@ -43,5 +44,11 @@ public class Trgovina : MonoBehaviour
             totalValue += wallet.banknotes[i].quantity * wallet.banknotes[i].value;
         }
         return totalValue;
+    }
+
+    public void LargePayment()
+    {
+        krupno = true;
+        SceneManager.LoadScene("Placanje");
     }
 }

@@ -773,7 +773,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1929371078}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.50683945
+  m_Size: 0.6091435
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -2237,7 +2237,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 898.274}
+  m_AnchoredPosition: {x: 0, y: 1079.5879}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &829449417
@@ -3691,9 +3691,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1987953438}
-        m_MethodName: LoadScene
-        m_Mode: 5
+      - m_Target: {fileID: 1306420910}
+        m_MethodName: Pay
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -3857,6 +3857,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e431368cd4108e4684f0dd9fdb2e41c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  wallet:
+    coins: []
+    banknotes: []
   moneyList:
   - {fileID: 213292646}
   - {fileID: 238096567}
