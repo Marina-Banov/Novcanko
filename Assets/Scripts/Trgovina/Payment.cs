@@ -11,6 +11,7 @@ public class Payment : MonoBehaviour
     public GameObject[] moneyList;
     public TextMeshProUGUI[] quantityList;
     public TextMeshProUGUI noMoney;
+    public TextMeshProUGUI ostatakTMPro;
 
     private float[,] novcanik = {
                                     {0.01f, 0},
@@ -39,13 +40,13 @@ public class Payment : MonoBehaviour
         int coins = wallet.coins.Count;
         for (int i = 0; i < coins; i++)
         {
-            if (wallet.coins[coins-1-i].quantity == 0) continue;
-            novcanik[i,1] = wallet.coins[coins-1-i].quantity;
+            if (wallet.coins[coins - 1 - i].quantity == 0) continue;
+            novcanik[i, 1] = wallet.coins[coins - 1 - i].quantity;
         }
         for (int i = 0; i < wallet.banknotes.Count; i++)
         {
             if (wallet.banknotes[i].quantity == 0) continue;
-            novcanik[i+9, 1] = wallet.banknotes[i].quantity;
+            novcanik[i + 9, 1] = wallet.banknotes[i].quantity;
         }
     }
 
@@ -81,7 +82,7 @@ public class Payment : MonoBehaviour
         return ostatak;
     }
 
- 
+
     void Start()
     {
         int n = 200;
@@ -131,24 +132,33 @@ public class Payment : MonoBehaviour
         {
             for (int j = 15; j >= 0; j--)
             {
-                if (payment[j,1] > 0 && ost + payment[j,0] <= 0)
+                if (payment[j, 1] > 0 && ost + payment[j, 0] <= 0)
                 {
-                    int broj_novcanica = (int)payment[j,1];
+                    int broj_novcanica = (int)payment[j, 1];
                     for (int k = 1; k <= broj_novcanica; k++)
                     {
-                        if (ost + payment[j,0] > 0) break;
-                        ost += payment[j,0];
-                        payment[j,1] -= 1;
+                        if (ost + payment[j, 0] > 0) break;
+                        ost += payment[j, 0];
+                        payment[j, 1] -= 1;
+                        novcanik[j, 1] += 1;
                     }
                 }
             }
         }
 
+        MoneyChange(ost);
+
         for (int k = 0; k < 16; k++)
         {
             if (payment[k, 1] == 0) moneyList[k].SetActive(false);
-            else quantityList[k].text = "x" + payment[k,1].ToString();
+            else quantityList[k].text = "x" + payment[k, 1].ToString();
         }
+    }
+
+    public void MoneyChange(float o)
+    {
+        o = (float)Math.Round(o, 2);
+        ostatakTMPro.text = "Ostatak: " + Math.Abs(o).ToString() + " Kn";
     }
 
     public void Pay()
@@ -159,10 +169,10 @@ public class Payment : MonoBehaviour
             for (int i = 0; i < coins; i++)
                 wallet.coins[coins - 1 - i].quantity = (int)novcanik[i, 1];
         }
-        
+
         for (int i = 0; i < wallet.banknotes.Count; i++)
             wallet.banknotes[i].quantity = (int)novcanik[i + 9, 1];
-        
+
         System.IO.File.WriteAllText(StartMenu.walletSavePath, JsonUtility.ToJson(wallet));
         SceneManager.LoadScene("Trgovina");
     }
