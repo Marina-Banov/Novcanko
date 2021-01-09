@@ -9,7 +9,7 @@ public class ListController : MonoBehaviour
 
     void Start()
     {
-        string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
+        string jsonString = System.IO.File.ReadAllText(StartMenu.walletSavePath);
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
         for (int i = 0; i < wallet.coins.Count; i++)
         {

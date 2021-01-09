@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine;
 using TMPro;
 using System;
+using System.IO;
 
 public class Trgovina : MonoBehaviour
 {
@@ -18,7 +19,7 @@ public class Trgovina : MonoBehaviour
     void Start()
     {
         krupno = false;
-        string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
+        string jsonString = System.IO.File.ReadAllText(StartMenu.walletSavePath);
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
         COINS_ITEMS = wallet.coins.Count;
         BANKNOTES_ITEMS = wallet.banknotes.Count;

@@ -4,6 +4,7 @@ using UnityEngine;
 using TMPro;
 using System;
 using UnityEngine.UI;
+using System.IO;
 
 public class PopUpNovcanice : MonoBehaviour
 {
@@ -11,10 +12,11 @@ public class PopUpNovcanice : MonoBehaviour
     public TMP_InputField[] banknotesInput;
     public Button btnIncrease;
     public Button btnDecrease;
+    private string filePath;
 
     void ShowQuantity()
     {
-        string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
+        string jsonString = System.IO.File.ReadAllText(StartMenu.walletSavePath);
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
         for (int i = 0; i < 7; i++)
             banknotesInput[i].text = wallet.banknotes[6-i].quantity.ToString();
@@ -22,7 +24,7 @@ public class PopUpNovcanice : MonoBehaviour
 
     void RefreshQuantity()
     {
-        System.IO.File.WriteAllText(Application.dataPath + "/Resources/wallet.json", JsonUtility.ToJson(wallet));
+        System.IO.File.WriteAllText(StartMenu.walletSavePath, JsonUtility.ToJson(wallet));
         ShowQuantity();
     }
 

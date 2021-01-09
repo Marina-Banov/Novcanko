@@ -14,7 +14,7 @@ public class PopUpKovanice : MonoBehaviour
 
     void ShowQuantity()
     {
-        string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
+        string jsonString = System.IO.File.ReadAllText(StartMenu.walletSavePath);
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
         for (int i = 0; i < 9; i++)
             coinsInput[i].text = wallet.coins[i].quantity.ToString();
@@ -22,7 +22,7 @@ public class PopUpKovanice : MonoBehaviour
 
     void RefreshQuantity()
     {
-        System.IO.File.WriteAllText(Application.dataPath + "/Resources/wallet.json", JsonUtility.ToJson(wallet));
+        System.IO.File.WriteAllText(StartMenu.walletSavePath, JsonUtility.ToJson(wallet));
         ShowQuantity();
     }
 

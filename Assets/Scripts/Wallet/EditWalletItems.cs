@@ -17,7 +17,7 @@ public class EditWalletItems : MonoBehaviour
 
     void Start()
     {
-        string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
+        string jsonString = System.IO.File.ReadAllText(StartMenu.walletSavePath);
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
         COINS_ITEMS = wallet.coins.Count;
         BANKNOTES_ITEMS = wallet.banknotes.Count;
@@ -94,7 +94,7 @@ public class EditWalletItems : MonoBehaviour
 
     public void SaveToJson()
     {
-        System.IO.File.WriteAllText(Application.dataPath + "/Resources/wallet.json", JsonUtility.ToJson(wallet));
+        System.IO.File.WriteAllText(StartMenu.walletSavePath, JsonUtility.ToJson(wallet));
     }
 
     public void FlipMoney()

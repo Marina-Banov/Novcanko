@@ -33,7 +33,7 @@ public class Payment : MonoBehaviour
 
     void setUpNovcanik()
     {
-        string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
+        string jsonString = System.IO.File.ReadAllText(StartMenu.walletSavePath);
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
 
         int coins = wallet.coins.Count;
@@ -96,18 +96,19 @@ public class Payment : MonoBehaviour
             for (int j = 0; j < 9; j++)
                 novcanik[j, 1] = 0;
         }
-            float[,] novcanik_pocetak = novcanik.Clone() as float[,];
-            float[,] payment = novcanik.Clone() as float[,];
 
-            for (int j = 0; j < 16; j++)
-                iznos -= (novcanik[j, 0] * novcanik[j, 1]);
+        float[,] novcanik_pocetak = novcanik.Clone() as float[,];
+        float[,] payment = novcanik.Clone() as float[,];
 
-            if (iznos > 0)
-            {
-                ost = 0;
-                noMoney.enabled = true;
-                noMoney.gameObject.SetActive(true);
-            }
+        for (int j = 0; j < 16; j++)
+            iznos -= (novcanik[j, 0] * novcanik[j, 1]);
+
+        if ((float)Math.Round(iznos, 2) > 0)
+        {
+            ost = 0;
+            noMoney.enabled = true;
+            noMoney.gameObject.SetActive(true);
+        }
 
 
         while (ost > 0)
@@ -162,7 +163,7 @@ public class Payment : MonoBehaviour
         for (int i = 0; i < wallet.banknotes.Count; i++)
             wallet.banknotes[i].quantity = (int)novcanik[i + 9, 1];
         
-        System.IO.File.WriteAllText(Application.dataPath + "/Resources/wallet.json", JsonUtility.ToJson(wallet));
+        System.IO.File.WriteAllText(StartMenu.walletSavePath, JsonUtility.ToJson(wallet));
         SceneManager.LoadScene("Trgovina");
     }
 
