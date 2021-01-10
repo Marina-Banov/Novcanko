@@ -30,6 +30,9 @@ EditorBuildSettings:
     path: Assets/Scenes/EditWalletItems.unity
     guid: 88e52a254af26ca4bb9e6f5e073d2c69
   - enabled: 1
+    path: Assets/Scenes/GameEasy.unity
+    guid: a91c6239d2a7c664c9524d0eb1723311
+  - enabled: 1
     path: Assets/Scenes/Placanje.unity
     guid: af72e7a28c714cb47adbd8448279412b
   m_configObjects: {}
