@@ -16,10 +16,10 @@ public class LevelManagement : MonoBehaviour
 
 	void Start()
     {
-        string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/levels.json");
+        string jsonString = System.IO.File.ReadAllText(StartMenu.levelsSavePath);
         levelList = JsonUtility.FromJson<LevelList>(jsonString);
         difficulty = PlayerPrefs.GetString("gameDifficulty");
-        loadedLevels = (difficulty == "EasyGame") ? levelList.easy : levelList.hard;
+		loadedLevels = (difficulty == "EasyGame") ? levelList.easy : levelList.hard;
 		maxLevel = loadedLevels.Count - 1;
 		currentLevel = System.Math.Max(0, loadedLevels.FindIndex(NotCompleted));
 		// currentLevel = 0;
@@ -87,7 +87,7 @@ public class LevelManagement : MonoBehaviour
         {
 			levelList.hard[currentLevel].completed = true;
 		}
-		System.IO.File.WriteAllText(Application.dataPath + "/Resources/levels.json", JsonUtility.ToJson(levelList));
+		System.IO.File.WriteAllText(StartMenu.levelsSavePath, JsonUtility.ToJson(levelList));
 		// ZVUK BRAVO
 		rightAnswer++;
 		Debug.Log("broj tocnih" + rightAnswer);
