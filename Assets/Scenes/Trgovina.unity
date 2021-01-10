@@ -202,7 +202,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 26309554}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 566313898}
+        m_MethodName: LoadScene
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Placanje
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &26309554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,7 +332,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 145399450}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 566313899}
+        m_MethodName: LargePayment
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &145399450
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -584,6 +606,7 @@ GameObject:
   - component: {fileID: 566313896}
   - component: {fileID: 566313895}
   - component: {fileID: 566313898}
+  - component: {fileID: 566313899}
   m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
@@ -691,6 +714,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19dff688f83adb24187c67356cf17a2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &566313899
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 566313893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fafd54af8680c3d41bf58070ccbdd8df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  wallet:
+    coins: []
+    banknotes: []
+  total: {fileID: 1493539081}
+  inputField: {fileID: 2042515646}
 --- !u!1 &619914469
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,7 +1362,7 @@ GameObject:
   - component: {fileID: 1493539082}
   - component: {fileID: 1493539081}
   m_Layer: 0
-  m_Name: Text pare
+  m_Name: Text Ukupni novac
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1366,9 +1406,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'U novcaniku imam:
-
-    23.44 Kn'
+  m_text: "U nov\u010Daniku imam:\n\n"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ceac338da6f13034ba9defb6fe197937, type: 2}
   m_sharedMaterial: {fileID: -4063558678131208952, guid: ceac338da6f13034ba9defb6fe197937,
@@ -1396,8 +1434,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
-  m_fontSizeBase: 100
+  m_fontSize: 110
+  m_fontSizeBase: 110
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1564,7 +1602,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
   m_AnchoredPosition: {x: 0, y: 123.99994}
-  m_SizeDelta: {x: 1078, y: 248.10425}
+  m_SizeDelta: {x: 1080, y: 248.10425}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1805495963
 MonoBehaviour:
@@ -1749,7 +1787,6 @@ GameObject:
   - component: {fileID: 2042515650}
   - component: {fileID: 2042515649}
   - component: {fileID: 2042515648}
-  - component: {fileID: 2042515651}
   m_Layer: 0
   m_Name: InputField (TMP) Iznos
   m_TagString: Untagged
@@ -1911,18 +1948,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042515646}
   m_CullTransparentMesh: 0
---- !u!114 &2042515651
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042515646}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ad130eb4c18b344eb15f9534e46dd25, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2072925525
 GameObject:
   m_ObjectHideFlags: 0

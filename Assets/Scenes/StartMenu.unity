@@ -1032,6 +1032,7 @@ GameObject:
   - component: {fileID: 1201298100}
   - component: {fileID: 1201298099}
   - component: {fileID: 1201298103}
+  - component: {fileID: 1201298104}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1135,6 +1136,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19dff688f83adb24187c67356cf17a2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1201298104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201298098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 460be8b210435824a9c9b29cf42ba91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1207782593
@@ -1625,7 +1638,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: PopUpNovcanik
+          m_StringArgument: ShowWalletContent
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1739485437

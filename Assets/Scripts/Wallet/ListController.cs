@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class ListController : MonoBehaviour
 {
-    [SerializeField] public Wallet wallet;
-    public const int COINS_ITEMS = 4;
-    public const int BANKNOTES_ITEMS = 5;
-    public GameObject ContentPanel;
-    public GameObject ListItemPrefab;
+    [SerializeField] Wallet wallet;
+    public GameObject ContentPanel, ListItemPrefab;
 
     void Start()
     {
-        string jsonString = System.IO.File.ReadAllText(Application.dataPath + "/Resources/wallet.json");
+        string jsonString = System.IO.File.ReadAllText(StartMenu.walletSavePath);
         wallet = JsonUtility.FromJson<Wallet>(jsonString);
-        for (int i = 0; i < COINS_ITEMS; i++)
+        for (int i = 0; i < wallet.coins.Count; i++)
         {
             if (wallet.coins[i].quantity == 0) continue;
             GameObject walletItem = Instantiate(ListItemPrefab) as GameObject;
@@ -24,7 +21,7 @@ public class ListController : MonoBehaviour
             walletItem.transform.SetParent(ContentPanel.transform);
             walletItem.transform.localScale = new Vector3(3.0f, 3.0f, 3.0f);
         }
-        for (int i = 0; i < BANKNOTES_ITEMS; i++)
+        for (int i = 0; i < wallet.banknotes.Count; i++)
         {
             if (wallet.banknotes[i].quantity == 0) continue;
             GameObject walletItem = Instantiate(ListItemPrefab) as GameObject;
