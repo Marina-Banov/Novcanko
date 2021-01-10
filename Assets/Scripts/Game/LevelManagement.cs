@@ -20,6 +20,7 @@ public class LevelManagement : MonoBehaviour
         levelList = JsonUtility.FromJson<LevelList>(jsonString);
         difficulty = PlayerPrefs.GetString("gameDifficulty");
 		loadedLevels = (difficulty == "EasyGame") ? levelList.easy : levelList.hard;
+		givenTxt.enabled = (PlayerPrefs.GetString("helpTextVisibilty") == "true");
 		maxLevel = loadedLevels.Count - 1;
 		currentLevel = System.Math.Max(0, loadedLevels.FindIndex(NotCompleted));
 		// currentLevel = 0;
