@@ -29,7 +29,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
         //defaultPos = GetComponent<RectTransform>().localPosition;
     }
 
-	public void OnBeginDrag(PointerEventData eventData) { 
+	public void OnBeginDrag(PointerEventData eventData)
+	{
 		canvasGroup.blocksRaycasts = false;
 		if (droppedOnSlot) {
 			droppedOnSlot = false;
@@ -38,7 +39,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 		}
 	}
 
-	public void OnDrag(PointerEventData eventData) {
+	public void OnDrag(PointerEventData eventData)
+	{
 		moneyNumber = getMoneyNumber(moneyName);
 		if (droppedOnSlot) {
 			moneyBox.anchoredPosition = primaryPos;
@@ -47,7 +49,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 		}
 	}
  
-	public void OnEndDrag(PointerEventData eventData) {
+	public void OnEndDrag(PointerEventData eventData)
+	{
 		canvasGroup.blocksRaycasts = true;
 		//int cloneNumber = checkClone(moneyName);
 		if (droppedOnSlot) {
@@ -57,20 +60,23 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 		}
 	}
 
-    public void OnPointerDown(PointerEventData eventData) {
-    	//Debug.Log("OnPointerDown");
-    } 
+    public void OnPointerDown(PointerEventData eventData)
+	{
+		//Debug.Log("OnPointerDown");
+	} 
 
-    public int getMoneyNumber(string MoneyName) {
-    	moneyName = GetComponent<Image>().name;
+    public int getMoneyNumber(string MoneyName)
+	{
+		moneyName = GetComponent<Image>().name;
 		string moneyNumber_str = moneyName.Substring(2);
 		int moneyNumber = int.Parse(moneyNumber_str);
 		return moneyNumber;
     }
 
-    public void RemovedMoney(int number) {
-    	// GiveAmount.givenNumber -= number;
-		canvasGroup.GetComponent<LevelManagement>().UpdateGiven(-number);
+    public void RemovedMoney(int number)
+	{
+		// GiveAmount.givenNumber -= number;
+		canvas.GetComponent<LevelManagement>().UpdateGiven(-number);
 		moneyBox.gameObject.tag = "Untagged";
     	int cloneCount = checkClone(moneyName);
     	if (cloneCount != 0) {
@@ -78,8 +84,9 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     	}
     }
 
-    int checkClone(string objectName) {
-    	int cnt = 0;
+    int checkClone(string objectName)
+	{
+		int cnt = 0;
     	foreach(GameObject gameObj in GameObject.FindObjectsOfType<GameObject>()) {
 			//Debug.Log("moneyName: " + moneyName);
 			if(gameObj.name == moneyName && gameObj.tag == "Untagged") {
@@ -89,7 +96,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 		return cnt;
     }
 
-    void cloneObject() {
+    void cloneObject()
+	{
 		moneyBoxClone = Instantiate(moneyBox);
 		moneyBoxClone.name = moneyBox.name;
 		moneyBoxClone.transform.SetParent(canvas.transform);
