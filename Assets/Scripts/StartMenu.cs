@@ -25,6 +25,11 @@ public class StartMenu : MonoBehaviour
             Debug.Log("ima bajo moj");
         }
     }
+
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }
 
 
