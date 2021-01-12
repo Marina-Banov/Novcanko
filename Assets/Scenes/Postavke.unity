@@ -828,6 +828,7 @@ GameObject:
   m_Component:
   - component: {fileID: 714845979}
   - component: {fileID: 714845980}
+  - component: {fileID: 714845981}
   m_Layer: 0
   m_Name: SliderGlazba
   m_TagString: Untagged
@@ -900,13 +901,38 @@ MonoBehaviour:
   m_FillRect: {fileID: 1447506336}
   m_HandleRect: {fileID: 885683180}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
   m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 714845981}
+        m_MethodName: SetLevel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &714845981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 714845978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e46eaa95b1d7ea9428cd32fb67e356f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 4020723d620c39c4fb00e89e128793e1, type: 2}
+  slider: {fileID: 714845980}
 --- !u!1 &885683179
 GameObject:
   m_ObjectHideFlags: 0
@@ -1331,6 +1357,7 @@ GameObject:
   - component: {fileID: 1661063041}
   - component: {fileID: 1661063040}
   - component: {fileID: 1661063039}
+  - component: {fileID: 1661063042}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -1403,6 +1430,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1661063042
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1661063038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b61e969310eadf4e9c901e073545333, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1687103673
 GameObject:
   m_ObjectHideFlags: 0
