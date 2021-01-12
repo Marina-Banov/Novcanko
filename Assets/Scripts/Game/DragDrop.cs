@@ -21,6 +21,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
 	private void Start() {
         primaryPos = GetComponent<RectTransform>().localPosition;
+        moneyBox.transform.localScale = new Vector3(1, 1, 1);
     }
 
     private void Awake() {
@@ -99,6 +100,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     void cloneObject()
 	{
 		moneyBoxClone = Instantiate(moneyBox);
+		moneyBoxClone.transform.localScale = new Vector3(1, 1, 1);
 		moneyBoxClone.name = moneyBox.name;
 		moneyBoxClone.transform.SetParent(canvas.transform);
 		moneyBoxClone.tag = "Untagged";
