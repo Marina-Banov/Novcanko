@@ -5,10 +5,13 @@ using UnityEngine;
 using TMPro;
 using System;
 using System.IO;
+using UnityEngine.Audio;
 
 public class StartMenu : MonoBehaviour
 {
     static public string walletSavePath, levelsSavePath;
+    public AudioMixer mixer1;
+    public AudioMixer mixer2;
 
     void Start()
     {
@@ -16,6 +19,9 @@ public class StartMenu : MonoBehaviour
         SetLevelsSavePath();
         SetPlayerPref("gameDifficulty", "EasyGame");
         SetPlayerPref("helpTextVisibilty", "true");
+
+        mixer1.SetFloat("MusicVol", Mathf.Log10(PlayerPrefs.GetFloat("volume", 1.0f)) * 20);
+        mixer2.SetFloat("MusicVol", Mathf.Log10(PlayerPrefs.GetFloat("buttonVol", 1.0f)) * 20);
     }
 
     void SetWalletSavePath()

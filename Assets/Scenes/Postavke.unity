@@ -1231,6 +1231,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1491609760}
   - component: {fileID: 1491609761}
+  - component: {fileID: 1491609762}
   m_Layer: 0
   m_Name: SliderZvukovi
   m_TagString: Untagged
@@ -1303,13 +1304,38 @@ MonoBehaviour:
   m_FillRect: {fileID: 159532097}
   m_HandleRect: {fileID: 1124526662}
   m_Direction: 0
-  m_MinValue: 0
+  m_MinValue: 0.0001
   m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1491609762}
+        m_MethodName: SetLevel
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1491609762
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1491609759}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 015bfde9b17b3f6448f453f34c3ce5b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mixer: {fileID: 24100000, guid: 67bd937e74893dd43b5290d3a678f9dc, type: 2}
+  slider: {fileID: 1491609761}
 --- !u!1 &1562088020
 GameObject:
   m_ObjectHideFlags: 0
