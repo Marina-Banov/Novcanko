@@ -8,6 +8,8 @@ TagManager:
   - cashReg
   - Music
   - ButtonSound
+  - MoneyBag
+  - Star
   layers:
   - Default
   - TransparentFX

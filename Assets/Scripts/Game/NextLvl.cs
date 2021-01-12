@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class NextLvl : MonoBehaviour {
 
 	public Text levelTxt;
-    public int maxLevel; 
+    public static int maxLevel; 
     public static int rightAnswer = 0;
     public static int levelNumber = 1;
     public static bool proceed = false;
@@ -56,6 +56,6 @@ public class NextLvl : MonoBehaviour {
 		//Debug.Log("broj tocnih NA KRAJU " + rightAnswer);
 		levelNumber = 1;
 		rightAnswer = 0;
-		SceneManager.LoadScene("StartMenu");
+		//SceneManager.LoadScene("StartMenu");
 	}
 }

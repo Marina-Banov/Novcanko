@@ -14,6 +14,8 @@ public class LevelManagement : MonoBehaviour
 	float amountNumber, givenNumber = 0;
 	public TextMeshProUGUI levelTxt, amountTxt, givenTxt;
 
+	public GameObject gameComplete;
+
 	void Start()
     {
         string jsonString = System.IO.File.ReadAllText(StartMenu.levelsSavePath);
@@ -101,13 +103,26 @@ public class LevelManagement : MonoBehaviour
 
 	void EndGame()
 	{
+
 		if (PlayerPrefs.GetInt("highscoreEasy") < rightAnswer)
 		{
 			PlayerPrefs.SetInt("highscoreEasy", rightAnswer);
 		}
-		//Debug.Log("broj tocnih NA KRAJU " + rightAnswer);
-		//currentLevel = 1;
-		//rightAnswer = 0;
-		SceneManager.LoadScene("StartMenu");
+		gameComplete.gameObject.SetActive(true);
+		GameObject[] stars = GameObject.FindGameObjectsWithTag("Star");
+
+		float scorePers = (float)rightAnswer / ((float)maxLevel+1);
+		Debug.Log(scorePers);
+		int starNum = 0;
+		if (scorePers >= 0.8) starNum = 5;
+		else if (scorePers < 0.8 && scorePers >= 0.6) starNum = 4;
+		else if (scorePers < 0.6 && scorePers >= 0.4) starNum = 3;
+		else if (scorePers < 0.4 && scorePers >= 0.2) starNum = 2;
+		else starNum = 1;
+		for (int i  = 0; i < starNum; i++) {
+			if (int.Parse(stars[i].name) == i+1) {
+				 stars[i].transform.GetChild(0).gameObject.SetActive(true);
+			}
+		}
 	}
 }

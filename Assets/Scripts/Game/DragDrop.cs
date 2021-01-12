@@ -15,6 +15,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 	static public int moneyNumber = 0;
 	static public string moneyName;
 
+	private GameObject Money = null;
+
 	public bool droppedOnSlot = false;
 
 	public Vector3 primaryPos;
@@ -22,6 +24,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 	private void Start() {
         primaryPos = GetComponent<RectTransform>().localPosition;
         moneyBox.transform.localScale = new Vector3(1, 1, 1);
+        Money = GameObject.FindGameObjectsWithTag("MoneyBag")[0];
+        Money.transform.SetParent(canvas.transform);
     }
 
     private void Awake() {
@@ -102,7 +106,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 		moneyBoxClone = Instantiate(moneyBox);
 		moneyBoxClone.transform.localScale = new Vector3(1, 1, 1);
 		moneyBoxClone.name = moneyBox.name;
-		moneyBoxClone.transform.SetParent(canvas.transform);
+		moneyBoxClone.transform.SetParent(Money.transform);
 		moneyBoxClone.tag = "Untagged";
 		moneyBoxClone.GetComponent<DragDrop>().droppedOnSlot = false;
 		moneyBoxClone.localPosition = primaryPos;
