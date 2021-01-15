@@ -12,9 +12,9 @@ public class LevelManagement : MonoBehaviour
 	int maxLevel, currentLevel;
 	int rightAnswer = 0;
 	float amountNumber, givenNumber = 0;
-	public TextMeshProUGUI levelTxt, amountTxt, givenTxt;
+	public TextMeshProUGUI levelTxt, amountTxt, givenTxt, resultTxt;
 
-	public GameObject gameComplete;
+	public GameObject gameComplete, lipe;
 
 	void Start()
     {
@@ -36,6 +36,9 @@ public class LevelManagement : MonoBehaviour
 
 	void SetLevel()
     {
+    	if (difficulty != "EasyGame") {
+    		lipe.gameObject.SetActive(true);
+    	}
 		amountNumber = loadedLevels[currentLevel].goalAmount;
 		levelTxt.text = "Level: " + (currentLevel + 1).ToString() + "/" + (maxLevel + 1).ToString();
 		amountTxt.text = "Teta prodavačica traži " + amountNumber.ToString() + "kn";
@@ -45,7 +48,11 @@ public class LevelManagement : MonoBehaviour
 	public void UpdateGiven(float offset)
     {
 		givenNumber += offset;
-		givenTxt.text = "Za sada imaš " + givenNumber.ToString() + "kn";
+		if (difficulty != "EasyGame") {
+			givenTxt.text = "Za sada imaš " + givenNumber.ToString("F2") + "kn";
+		} else {
+			givenTxt.text = "Za sada imaš " + givenNumber.ToString() + "kn";
+		}
 	}
 
 	public void ProceedLevel()
@@ -93,7 +100,7 @@ public class LevelManagement : MonoBehaviour
 		System.IO.File.WriteAllText(StartMenu.levelsSavePath, JsonUtility.ToJson(levelList));
 		// ZVUK BRAVO
 		rightAnswer++;
-		Debug.Log("broj tocnih" + rightAnswer);
+		//Debug.Log("broj tocnih" + rightAnswer);
 	}
 
 	void WrongAnswer()
@@ -112,7 +119,7 @@ public class LevelManagement : MonoBehaviour
 		GameObject[] stars = GameObject.FindGameObjectsWithTag("Star");
 
 		float scorePers = (float)rightAnswer / ((float)maxLevel+1);
-		Debug.Log(scorePers);
+		//Debug.Log(scorePers);
 		int starNum = 0;
 		if (scorePers >= 0.8) starNum = 5;
 		else if (scorePers < 0.8 && scorePers >= 0.6) starNum = 4;
@@ -124,5 +131,6 @@ public class LevelManagement : MonoBehaviour
 				 stars[i].transform.GetChild(0).gameObject.SetActive(true);
 			}
 		}
+		resultTxt.text = "Točnih odgovora: " + rightAnswer + "/" + (maxLevel+1);
 	}
 }

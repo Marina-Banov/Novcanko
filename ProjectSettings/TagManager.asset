@@ -10,6 +10,7 @@ TagManager:
   - ButtonSound
   - MoneyBag
   - Star
+  - Lipe
   layers:
   - Default
   - TransparentFX

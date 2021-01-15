@@ -12,7 +12,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 	private RectTransform moneyBox, moneyBoxClone;
 	private CanvasGroup canvasGroup;
 
-	static public int moneyNumber = 0;
+	static public float moneyNumber = 0;
 	static public string moneyName;
 
 	private GameObject Money = null;
@@ -59,6 +59,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 		canvasGroup.blocksRaycasts = true;
 		//int cloneNumber = checkClone(moneyName);
 		if (droppedOnSlot) {
+			//play sound
+
 			cloneObject();
 		} else {
 			this.moneyBox.localPosition = primaryPos;
@@ -70,15 +72,16 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 		//Debug.Log("OnPointerDown");
 	} 
 
-    public int getMoneyNumber(string MoneyName)
+    public float getMoneyNumber(string MoneyName)
 	{
 		moneyName = GetComponent<Image>().name;
 		string moneyNumber_str = moneyName.Substring(2);
-		int moneyNumber = int.Parse(moneyNumber_str);
+		moneyNumber = float.Parse(moneyNumber_str);
+		if (moneyName[0] == 'l') moneyNumber /= 100;
 		return moneyNumber;
     }
 
-    public void RemovedMoney(int number)
+    public void RemovedMoney(float number)
 	{
 		// GiveAmount.givenNumber -= number;
 		canvas.GetComponent<LevelManagement>().UpdateGiven(-number);
