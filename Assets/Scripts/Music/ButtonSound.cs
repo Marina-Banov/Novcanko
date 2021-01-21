@@ -19,7 +19,7 @@ public class ButtonSound : MonoBehaviour
     {
         audioSource.clip = audioClip;
         audioSource.Play();
-
+        
         if (activeObject != null)
         {
             Destroy(activeObject, .5f);
