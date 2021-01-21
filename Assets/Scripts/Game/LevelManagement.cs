@@ -13,6 +13,10 @@ public class LevelManagement : MonoBehaviour
 	int rightAnswer = 0;
 	float amountNumber, givenNumber = 0;
 	public TextMeshProUGUI levelTxt, amountTxt, givenTxt, resultTxt;
+	public AudioSource audioSourceT;
+	public AudioClip audioClipT;
+	public AudioSource audioSourceN;
+	public AudioClip audioClipN;
 
 	public GameObject gameComplete, lipe;
 
@@ -57,9 +61,8 @@ public class LevelManagement : MonoBehaviour
 
 	public void ProceedLevel()
 	{
-		if (givenNumber - amountNumber < 0.0001)
+		if (amountNumber - givenNumber < 0.0001)
 		{
-	
 			RightAnswer();
 		}
 		else
@@ -100,6 +103,9 @@ public class LevelManagement : MonoBehaviour
 		}
 		System.IO.File.WriteAllText(StartMenu.levelsSavePath, JsonUtility.ToJson(levelList));
 		// ZVUK BRAVO
+		audioSourceT.clip = audioClipT;
+		audioSourceT.Play();
+		
 		rightAnswer++;
 		//Debug.Log("right answer");
 		//Debug.Log("broj tocnih" + rightAnswer);
@@ -108,6 +114,8 @@ public class LevelManagement : MonoBehaviour
 	void WrongAnswer()
 	{
 		/// ZVUK KRIVO! I PORUKA NA PAR SEKUNDI - KRIVO, ALI SAMO HRABRO NAPRIJED?
+		audioSourceN.clip = audioClipN;
+		audioSourceN.Play();
 	}
 
 	void EndGame()

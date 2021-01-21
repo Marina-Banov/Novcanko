@@ -12,6 +12,11 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 	private RectTransform moneyBox, moneyBoxClone;
 	private CanvasGroup canvasGroup;
 
+	public AudioSource audioSourceBill;
+	public AudioClip audioClipBill;
+	public AudioSource audioSourceCoin;
+	public AudioClip audioClipCoin;
+
 	static public float moneyNumber = 0;
 	static public string moneyName;
 
@@ -60,6 +65,16 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 		//int cloneNumber = checkClone(moneyName);
 		if (droppedOnSlot) {
 			//play sound
+			if(moneyNumber > 5)
+            {
+				audioSourceBill.clip = audioClipBill;
+				audioSourceBill.Play();
+			}
+            else
+            {
+				audioSourceCoin.clip = audioClipCoin;
+				audioSourceCoin.Play();
+			}
 
 			cloneObject();
 		} else {
