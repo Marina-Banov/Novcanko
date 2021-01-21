@@ -40,7 +40,7 @@ public class LevelManagement : MonoBehaviour
     		lipe.gameObject.SetActive(true);
     	}
 		amountNumber = loadedLevels[currentLevel].goalAmount;
-		levelTxt.text = "Level: " + (currentLevel + 1).ToString() + "/" + (maxLevel + 1).ToString();
+		levelTxt.text = "RAZINA: " + (currentLevel + 1).ToString() + "/" + (maxLevel + 1).ToString();
 		amountTxt.text = "Teta prodavačica traži " + amountNumber.ToString() + "kn";
 		UpdateGiven(-givenNumber);
 	}
@@ -100,6 +100,7 @@ public class LevelManagement : MonoBehaviour
 		System.IO.File.WriteAllText(StartMenu.levelsSavePath, JsonUtility.ToJson(levelList));
 		// ZVUK BRAVO
 		rightAnswer++;
+		//Debug.Log("right answer");
 		//Debug.Log("broj tocnih" + rightAnswer);
 	}
 
@@ -117,9 +118,7 @@ public class LevelManagement : MonoBehaviour
 		}
 		gameComplete.gameObject.SetActive(true);
 		GameObject[] stars = GameObject.FindGameObjectsWithTag("Star");
-
 		float scorePers = (float)rightAnswer / ((float)maxLevel+1);
-		//Debug.Log(scorePers);
 		int starNum = 0;
 		if (scorePers >= 0.8) starNum = 5;
 		else if (scorePers < 0.8 && scorePers >= 0.6) starNum = 4;
