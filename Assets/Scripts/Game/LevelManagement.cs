@@ -57,8 +57,9 @@ public class LevelManagement : MonoBehaviour
 
 	public void ProceedLevel()
 	{
-		if (givenNumber == amountNumber)
+		if (givenNumber - amountNumber < 0.0001)
 		{
+	
 			RightAnswer();
 		}
 		else
