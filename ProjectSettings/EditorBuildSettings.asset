@@ -35,4 +35,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Placanje.unity
     guid: af72e7a28c714cb47adbd8448279412b
+  - enabled: 1
+    path: Assets/Scenes/info.unity
+    guid: e285684c3b2f97549ab2cb30eaa1cb60
   m_configObjects: {}

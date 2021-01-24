@@ -228,8 +228,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3696706}
-        m_MethodName: PlaySound
+      - m_Target: {fileID: 566313899}
+        m_MethodName: onToggleSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -580,6 +580,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hardGameToggle: {fileID: 854436116}
   helpTextToggle: {fileID: 288747552}
+  audioSource: {fileID: 1688515738}
+  audioClip: {fileID: 8300000, guid: 09dcf7e99789a1340bcf8c35f26ca050, type: 3}
 --- !u!1 &595572061
 GameObject:
   m_ObjectHideFlags: 0
@@ -884,8 +886,8 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 3696706}
-        m_MethodName: PlaySound
+      - m_Target: {fileID: 566313899}
+        m_MethodName: onToggleSound
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1281,6 +1283,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b61e969310eadf4e9c901e073545333, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!82 &1688515738 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 521325770100440252, guid: 8133adbe4a9d7d648bcbdbd1b59674f0,
+    type: 3}
+  m_PrefabInstance: {fileID: 2088339138}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1866393985
 GameObject:
   m_ObjectHideFlags: 0

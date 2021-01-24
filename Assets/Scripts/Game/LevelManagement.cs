@@ -127,13 +127,14 @@ public class LevelManagement : MonoBehaviour
 		}
 		gameComplete.gameObject.SetActive(true);
 		GameObject[] stars = GameObject.FindGameObjectsWithTag("Star");
-		float scorePers = (float)rightAnswer / ((float)maxLevel+1);
+		float scorePers = (float)rightAnswer / ((float)maxLevel + 1);
 		int starNum = 0;
-		if (scorePers >= 0.8) starNum = 5;
-		else if (scorePers < 0.8 && scorePers >= 0.6) starNum = 4;
-		else if (scorePers < 0.6 && scorePers >= 0.4) starNum = 3;
-		else if (scorePers < 0.4 && scorePers >= 0.2) starNum = 2;
-		else starNum = 1;
+		if (scorePers > 0.800001) starNum = 5;
+		else if (scorePers <= 0.800001 && scorePers > 0.600001) starNum = 4;
+		else if (scorePers <= 0.600001 && scorePers > 0.400001) starNum = 3;
+		else if (scorePers <= 0.400001 && scorePers > 0.200001) starNum = 2;
+		else if (scorePers > 0) starNum = 1;
+		else starNum = 0;
 		for (int i  = 0; i < starNum; i++) {
 			if (int.Parse(stars[i].name) == i+1) {
 				 stars[i].transform.GetChild(0).gameObject.SetActive(true);
