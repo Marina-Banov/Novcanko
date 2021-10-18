@@ -12,10 +12,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 	private RectTransform moneyBox, moneyBoxClone;
 	private CanvasGroup canvasGroup;
 
-	public AudioSource audioSourceBill;
-	public AudioClip audioClipBill;
-	public AudioSource audioSourceCoin;
-	public AudioClip audioClipCoin;
+	public AudioSource audioSourceTap; // kovanice i novcanice proizvode isti zvuk
+	public AudioClip audioClipTap;
 
 	static public float moneyNumber = 0;
 	static public string moneyName;
@@ -46,6 +44,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 			droppedOnSlot = false;
 			moneyNumber = getMoneyNumber(moneyName);
 			RemovedMoney(moneyNumber);
+			audioSourceTap.clip = audioClipTap;
+			audioSourceTap.Play();
 		}
 	}
 
@@ -65,17 +65,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 		//int cloneNumber = checkClone(moneyName);
 		if (droppedOnSlot) {
 			//play sound
-			if(moneyNumber > 5)
-            {
-				audioSourceBill.clip = audioClipBill;
-				audioSourceBill.Play();
-			}
-            else
-            {
-				audioSourceCoin.clip = audioClipCoin;
-				audioSourceCoin.Play();
-			}
-
+			audioSourceTap.clip = audioClipTap;
+			audioSourceTap.Play();
 			cloneObject();
 		} else {
 			this.moneyBox.localPosition = primaryPos;
@@ -85,6 +76,18 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     public void OnPointerDown(PointerEventData eventData)
 	{
 		//Debug.Log("OnPointerDown");
+		moneyBox.anchoredPosition = primaryPos;
+		int cloneCount = checkClone(moneyName);
+		if (droppedOnSlot)
+		{
+			moneyNumber = getMoneyNumber(moneyName);
+			RemovedMoney(moneyNumber);
+		}
+			if (cloneCount > 1)
+		{
+			Destroy(moneyBox.gameObject);
+		}
+		
 	} 
 
     public float getMoneyNumber(string MoneyName)
@@ -98,7 +101,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     public void RemovedMoney(float number)
 	{
-		// GiveAmount.givenNumber -= number;
+	    //GiveAmount.givenNumber -= (int) number;
 		canvas.GetComponent<LevelManagement>().UpdateGiven(-number);
 		moneyBox.gameObject.tag = "Untagged";
     	int cloneCount = checkClone(moneyName);
@@ -122,7 +125,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
     void cloneObject()
 	{
 		moneyBoxClone = Instantiate(moneyBox);
-		moneyBoxClone.transform.localScale = new Vector3(1, 1, 1);
+		//moneyBoxClone.transform.localScale = new Vector3(1, 1, 1);
 		moneyBoxClone.name = moneyBox.name;
 		moneyBoxClone.transform.SetParent(Money.transform);
 		moneyBoxClone.tag = "Untagged";
