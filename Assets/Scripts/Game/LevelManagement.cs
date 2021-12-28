@@ -23,6 +23,16 @@ public class LevelManagement : MonoBehaviour
 
 	public GameObject gameComplete, lipe, piggyLvl, wrongAnswerScreen;
 
+	public float getGivenNumver()
+    {
+		return givenNumber;
+	}
+
+	public float getAmountNumber()
+	{
+		return amountNumber;
+	}
+
 	void Start()
     {
 		maxPrice = PlayerPrefs.GetString("maxLevelPrice");
