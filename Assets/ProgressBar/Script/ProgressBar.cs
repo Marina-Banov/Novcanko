@@ -41,7 +41,7 @@ public class ProgressBar : MonoBehaviour
 
         set
         {
-            //value = Mathf.Clamp(value, 0, 120);
+            //value = Mathf.Clamp(value, 0, 420);
             barValue = value;
             UpdateValue(barValue);
 
@@ -80,16 +80,20 @@ public class ProgressBar : MonoBehaviour
 
         //Debug.Log(canvas.GetComponent<LevelManagement>().getGivenNumver());
         float amount = Mathf.Round(canvas.GetComponent<LevelManagement>().getAmountNumber() * 100f) / 100f;
+        val = Mathf.Round(val * 100f) / 100f;
         bar.fillAmount = (val / (amount * 2));
-        txtTitle.text = Title + " " + val + "kn / " + amount + "kn";
-        
-        if (amount > val)
-        {
-            bar.color = BarAlertColor;
-        }
-        else if (amount == val)
+        txtTitle.text = Title + " " + val.ToString("F2") + "kn / " + amount.ToString("F2") + "kn";
+
+        float diff = Mathf.Round((amount - val) * 100f) / 100f;
+
+        Debug.Log(diff);
+        if (diff == 0.00)
         {
             bar.color = BarCorrectColor;
+        }
+        else if (amount > val)
+        {
+            bar.color = BarAlertColor;
         }
         else
         {

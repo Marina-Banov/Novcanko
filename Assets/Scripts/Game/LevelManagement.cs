@@ -83,7 +83,8 @@ public class LevelManagement : MonoBehaviour
 
 	public void ProceedLevel()
 	{
-		if (amountNumber - givenNumber < 0.0001)
+		float diff = Mathf.Round((amountNumber - givenNumber) * 100f) / 100f;
+		if (diff == 0.00)
 		{
 			RightAnswer();
 			currentLevel++;
