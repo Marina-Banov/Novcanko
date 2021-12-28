@@ -9,6 +9,7 @@ public class LevelManagement : MonoBehaviour
 	//[SerializeField] LevelList levelList;
 	//List<Level> loadedLevels;
 	//Random rnd = new Random();
+	string maxPrice;
 	string difficulty;
 	int currentLevel;
 	int levelNumber = 0; // broj levela kroz koje je korisnik prosao
@@ -24,9 +25,10 @@ public class LevelManagement : MonoBehaviour
 
 	void Start()
     {
-        //string jsonString = System.IO.File.ReadAllText(StartMenu.levelsSavePath);
-        //levelList = JsonUtility.FromJson<LevelList>(jsonString);
-        difficulty = PlayerPrefs.GetString("gameDifficulty");
+		maxPrice = PlayerPrefs.GetString("maxLevelPrice");
+		//string jsonString = System.IO.File.ReadAllText(StartMenu.levelsSavePath);
+		//levelList = JsonUtility.FromJson<LevelList>(jsonString);
+		difficulty = PlayerPrefs.GetString("gameDifficulty");
 		//loadedLevels = (difficulty == "EasyGame") ? levelList.easy : levelList.hard;
 		givenTxt.enabled = (PlayerPrefs.GetString("helpTextVisibilty") == "true");
 		//maxLevel = loadedLevels.Count - 1;
@@ -42,16 +44,18 @@ public class LevelManagement : MonoBehaviour
 
 	void SetLevel()
     {
+		int maximumPrice = System.Convert.ToInt32(maxPrice);
+		Debug.LogError(maximumPrice);
 		levelTxt.text = (currentLevel + 1).ToString();
 		if (difficulty != "EasyGame") {
     		lipe.gameObject.SetActive(true);
-			amountNumber = Random.Range(1.2f, 650.2f);
+			amountNumber = Random.Range(1.2f, maximumPrice);
 			amountTxt.text = "Teta prodavačica traži " + amountNumber.ToString("F2") + "kn";
 		}
 		//amountNumber = loadedLevels[currentLevel].goalAmount;
 		else
 		{
-			amountNumber = Random.Range(1, 650);
+			amountNumber = Random.Range(1, maximumPrice);
 			amountTxt.text = "Teta prodavačica traži " + amountNumber.ToString() + "kn";
 		}
 		UpdateGiven(-givenNumber);

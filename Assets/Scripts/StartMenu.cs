@@ -19,6 +19,7 @@ public class StartMenu : MonoBehaviour
         SetLevelsSavePath();
         SetPlayerPref("gameDifficulty", "EasyGame");
         SetPlayerPref("helpTextVisibilty", "true");
+        SetPlayerPref("maxLevelPrice", "500");
 
         mixer1.SetFloat("MusicVol", Mathf.Log10(PlayerPrefs.GetFloat("volume", 1.0f)) * 20);
         mixer2.SetFloat("MusicVol", Mathf.Log10(PlayerPrefs.GetFloat("buttonVol", 1.0f)) * 20);
