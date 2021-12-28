@@ -41,7 +41,7 @@ public class ProgressBar : MonoBehaviour
 
         set
         {
-            value = Mathf.Clamp(value, 0, 100);
+            //value = Mathf.Clamp(value, 0, 120);
             barValue = value;
             UpdateValue(barValue);
 
