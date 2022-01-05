@@ -14,7 +14,7 @@ public class Overlap : MonoBehaviour
     {
         if (target.tag == "Untagged")
         {
-            Debug.Log("hello");
+            //Debug.Log("hello");
             //target.gameObject.SetActive(false);
         }
     }

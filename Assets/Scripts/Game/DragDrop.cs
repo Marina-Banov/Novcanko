@@ -153,6 +153,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 	public AudioClip audioClipBill;
 	public AudioSource audioSourceCoin;
 	public AudioClip audioClipCoin;
+	public AudioSource audioSourceMoneyPop;
+	public AudioClip audioClipMoneyPop;
 
 	static public float moneyNumber = 0;
 	static public string moneyName;
@@ -187,6 +189,7 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 			droppedOnSlot = false;
 			moneyNumber = getMoneyNumber(moneyName);
 			RemovedMoney(moneyNumber);
+			
 		}
 	}
 
@@ -258,6 +261,8 @@ public class DragDrop : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 	public void RemovedMoney(float number)
 	{
 		// GiveAmount.givenNumber -= number;
+		audioSourceMoneyPop.clip = audioClipMoneyPop;
+		audioSourceMoneyPop.Play();
 		canvas.GetComponent<LevelManagement>().UpdateGiven(-number);
 		moneyBox.gameObject.tag = "Untagged";
 		int cloneCount = checkClone(moneyName);

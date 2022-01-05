@@ -21,7 +21,7 @@ public class LevelManagement : MonoBehaviour
 	public AudioSource audioSourceN;
 	public AudioClip audioClipN;
 
-	public GameObject gameComplete, lipe, piggyLvl, wrongAnswerScreen;
+	public GameObject gameComplete, lipe, progressBar;
 
 	public float getGivenNumver()
     {
@@ -41,6 +41,7 @@ public class LevelManagement : MonoBehaviour
 		difficulty = PlayerPrefs.GetString("gameDifficulty");
 		//loadedLevels = (difficulty == "EasyGame") ? levelList.easy : levelList.hard;
 		givenTxt.enabled = (PlayerPrefs.GetString("helpTextVisibilty") == "true");
+		progressBar.SetActive((PlayerPrefs.GetString("helpTextVisibilty") == "true"));
 		//maxLevel = loadedLevels.Count - 1;
 		//currentLevel = System.Math.Max(0, loadedLevels.FindIndex(NotCompleted));
 		currentLevel = 0;
@@ -55,7 +56,7 @@ public class LevelManagement : MonoBehaviour
 	void SetLevel()
     {
 		int maximumPrice = System.Convert.ToInt32(maxPrice);
-		Debug.LogError(maximumPrice);
+		//Debug.LogError(maximumPrice);
 		levelTxt.text = (currentLevel + 1).ToString();
 		if (difficulty != "EasyGame") {
     		lipe.gameObject.SetActive(true);
@@ -111,42 +112,21 @@ public class LevelManagement : MonoBehaviour
 		audioSourceT.clip = audioClipT;
 		audioSourceT.Play();
 		rightAnswer++;
-		StartCoroutine(piggyExpand());
 		
 		//Debug.Log("right answer");
 		//Debug.Log("broj tocnih" + rightAnswer);
 	}
 
-	IEnumerator piggyExpand()
-	{
-		piggyLvl.gameObject.transform.localScale = new Vector3(1.25f, 1.25f, 1);
-
-		//Wait for 1 seconds
-		yield return new WaitForSeconds(0.7f);
-
-		//Rotate 40 deg
-		piggyLvl.gameObject.transform.localScale = new Vector3(1, 1, 1);
-	}
 
 	
 	void WrongAnswer()
 	{
 		audioSourceN.clip = audioClipN;
 		audioSourceN.Play();
-		StartCoroutine(closeWrongAnswer());
 	}
 
-	IEnumerator closeWrongAnswer()
-	{
-		wrongAnswerScreen.gameObject.SetActive(true);
-		yield return new WaitForSeconds(5);	
-		wrongAnswerScreen.gameObject.SetActive(false);
-	}
 
-	void closePopUp()
-    {
-		wrongAnswerScreen.gameObject.SetActive(false);
-	}
+
 
 	void EndGame()
 	{

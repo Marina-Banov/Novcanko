@@ -86,7 +86,7 @@ public class ProgressBar : MonoBehaviour
 
         float diff = Mathf.Round((amount - val) * 100f) / 100f;
 
-        Debug.Log(diff);
+        //Debug.Log(diff);
         if (diff == 0.00)
         {
             bar.color = BarCorrectColor;
