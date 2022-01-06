@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 
 [ExecuteInEditMode]
@@ -10,11 +11,18 @@ public class ProgressBar : MonoBehaviour
 {
     public Canvas canvas;
 
+    /*
     [Header("Title Setting")]
     public string Title;
     public Color TitleColor;
     public Font TitleFont;
-    public int TitleFontSize = 10;
+    public int TitleFontSize = 10; */
+
+    [Header("Title Setting")]
+    public string Title;
+    public Color32 TitleColor;
+    public TMPro.TMP_FontAsset TitleFont;
+    public float TitleFontSize = 10;
 
     [Header("Bar Setting")]
     public Color BarColor;   
@@ -33,7 +41,8 @@ public class ProgressBar : MonoBehaviour
     private Image bar, barBackground;
     private float nextPlay;
     private AudioSource audiosource;
-    private Text txtTitle;
+   // private Text txtTitle;
+    private TextMeshProUGUI txtTitle;
     private float barValue;
     public float BarValue
     {
@@ -54,13 +63,20 @@ public class ProgressBar : MonoBehaviour
     {
         bar = transform.Find("Bar").GetComponent<Image>();
         barBackground = GetComponent<Image>();
-        txtTitle = transform.Find("Text").GetComponent<Text>();
+        //txtTitle = transform.Find("Text").GetComponent<Text>();
+        txtTitle = transform.Find("Text").GetComponent<TextMeshProUGUI>();
         barBackground = transform.Find("BarBackground").GetComponent<Image>();
         audiosource = GetComponent<AudioSource>();
     }
 
     private void Start()
     {
+        /*
+        txtTitle.text = Title;
+        txtTitle.color = TitleColor;
+        txtTitle.font = TitleFont;
+        txtTitle.fontSize = TitleFontSize; */
+
         txtTitle.text = Title;
         txtTitle.color = TitleColor;
         txtTitle.font = TitleFont;
@@ -82,7 +98,15 @@ public class ProgressBar : MonoBehaviour
         float amount = Mathf.Round(canvas.GetComponent<LevelManagement>().getAmountNumber() * 100f) / 100f;
         val = Mathf.Round(val * 100f) / 100f;
         bar.fillAmount = (val / (amount * 2));
-        txtTitle.text = Title + " " + val.ToString("F2") + "kn / " + amount.ToString("F2") + "kn";
+        //txtTitle.text = Title + " " + val.ToString("F2") + "kn / " + amount.ToString("F2") + "kn";
+        if (PlayerPrefs.GetString("gameDifficulty") == "EasyGame")
+        {
+            txtTitle.text = Title + " " + val.ToString("F0") + "kn / " + amount.ToString("F0") + "kn";
+        } else
+        {
+            txtTitle.text = Title + " " + val.ToString("F2") + "kn / " + amount.ToString("F2") + "kn";
+        }
+        
 
         float diff = Mathf.Round((amount - val) * 100f) / 100f;
 
@@ -108,6 +132,11 @@ public class ProgressBar : MonoBehaviour
         if (!Application.isPlaying)
         {           
             UpdateValue(50);
+            /*
+            txtTitle.color = TitleColor;
+            txtTitle.font = TitleFont;
+            txtTitle.fontSize = TitleFontSize; */
+
             txtTitle.color = TitleColor;
             txtTitle.font = TitleFont;
             txtTitle.fontSize = TitleFontSize;
