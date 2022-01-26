@@ -6,6 +6,6 @@ public class PlayMusic : MonoBehaviour
 {
     void Start()
     {
-        GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().PlayMusic();
+        //GameObject.FindGameObjectWithTag("Music").GetComponent<MusicClass>().PlayMusic();
     }
 }

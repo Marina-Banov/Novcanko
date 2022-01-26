@@ -11,6 +11,7 @@ TagManager:
   - MoneyBag
   - Star
   - Lipe
+  - Pare
   layers:
   - Default
   - TransparentFX
@@ -20,9 +21,9 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
+  - Dragging
+  - Blur
+  - GameComplete
   - 
   - 
   - 
